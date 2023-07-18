@@ -1,0 +1,72 @@
+double ; float
+i32 ; int
+i8 ; int
+i64* ; int*
+%struct.node* ; %struct.node*
+i64 ; int
+i8* ; int*
+float ; float
+<2 x i32> ; <int>
+<4 x i32> ; <int>
+<4 x i32> ; <int>
+[20 x i8]* ; [int]*
+i8*** ; int***
+i8*** ; int***
+i8*** ; int***
+[100 x i32]* ; [int]*
+[20 x [20 x i8]]* ; [[int]]*
+%struct.lcg_rand** ; %struct.lcg_rand**
+%struct.node** ; %struct.node**
+i32** ; int**
+%struct.task* ; %struct.task*
+%struct.task** ; %struct.task**
+%struct.task*** ; %struct.task***
+{i32, float} ; struct
+{i32,{float}} ; struct
+double* ; float*
+%struct._IO_FILE* ; %struct._IO_FILE*
+i8** ; int**
+[5 x %struct.rect] ; [%struct.rect]
+[5 x %struct.rect]* ; [%struct.rect]*
+{i32, <2 x i8>}* ; struct*
+{i32, [12 x i8]} ; struct
+{i32, <2 x i8>} ; struct
+{i32, <2 x i8>}* ; struct*
+{i32, <2 x i8>}** ; struct**
+<4 x i32*> ; <int*>
+[4 x [3 x i32]]* ; [[int]]*
+i32 addrspace(1)* ; int*
+<4 x float addrspace(3)*> ; <float*>
+i32 (i8*, i32*, ...) ; int
+{ i8*, i32 } ; struct
+i1 ; int
+<4 x i1> ; <int>
+void ; void
+token ; token
+i32 (i32) ; int 				# Function taking an i32, returning an i32
+float (i16, i32 *) * ; float-function*	# Pointer to a function that takes an i16 and a pointer to i32, returning float.
+i32 (i8*, ...) ; int			# A vararg function that takes at least one pointer to i8 (char in C), which returns an integer. This is the signature for printf in LLVM.
+{i32, i32} (i32) ; struct 		# A function taking an i32, returning a structure containing two i32 values
+i1942562 ; int
+half ; float		# 16-bit floating-point value
+float ; float		# 32-bit floating-point value
+double; float	 	# 64-bit floating-point value
+fp128 ; float		# 128-bit floating-point value (112-bit mantissa)
+x86_fp80 ; float 	# 80-bit floating-point value (X87)
+ppc_fp128 ; float	# 128-bit floating-point value (two 64-bits)
+[4 x i32]* ; [int]*			# A pointer to array of four i32 values.
+i32 (i32*) * ; int-function*		# A pointer to a function that takes an i32*, returning an i32.
+i32 addrspace(5)* ; int*	# A pointer to an i32 value that resides in address space #5.
+<4 x i32> ; <int> 		# Vector of 4 32-bit integer values.
+<8 x float> ; <float> 	# Vector of 8 32-bit floating-point values.
+<2 x i64> ; <int> 		# Vector of 2 64-bit integer values.
+<4 x i64*> ; <int*> 	# Vector of 4 pointers to 64-bit integer values.
+[40 x i32] ; [int]		# Array of 40 32-bit integer values.
+[41 x i32] ; [int]		# Array of 41 32-bit integer values.
+[4 x i8] ; [int]		# Array of 4 8-bit integer values.
+[3 x [4 x i32]] ; [[int]]			# 3x4 array of 32-bit integer values.
+[12 x [10 x float]] ; [[float]]		# 12x10 array of single precision floating-point values.
+[2 x [3 x [4 x i16]]] ; [[[int]]]	# 2x3x4 array of 16-bit integer values.
+{ i32, i32, i32 } ;	struct			# A triple of three i32 values
+{ float, i32 (i32) * } ; struct		# A pair, where the first element is a float and the second element is a pointer to a function that takes an i32, returning an i32.
+<{ i8, i32 }> ; struct				# A packed struct known to be 5 bytes in size.

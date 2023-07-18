@@ -1,0 +1,20 @@
+RE,LABEL,COLOR
+ret|br|switch|indirectbr|invoke|callbr|resume|unreachable,                                          terminator,             #feb7d3
+catchswitch|catchret|cleanupret,                                                                    terminator-exception,   #ceffd1
+add|sub|mul|udiv|sdiv|urem|srem,                                                                    bynary-int,             #b5a9df
+fadd|fsub|fmul|fdiv|frem|fneg,                                                                      binary-float,           #b3d6a3
+shl|lshr|ashr|and|or|xor,                                                                           bitwise,                #bfa1cb
+extractelement|insertelement,                                                                       vector,                 #abb37c
+shufflevector|extractvalue|insertvalue,                                                             aggregate,              #eadcff
+load,                                                                                               load,                   #caa488
+store,                                                                                              store,                  #8eecff
+fence|cmpxchg|atomicrmw,                                                                            memory,                 #ffb9b7
+alloca,                                                                                             alloca,                 #bdfff1
+getelementptr,                                                                                      getelementptr,          #a7abbf
+trunc|zext|sext|fptrunc|fpext|fptoui|fptosi|uitofp|sitofp|ptrtoint|inttoptr|bitcast|addrspacecast,  conversion,             #efffdd
+call,                                                                                               call,                   #73b7b6
+phi,                                                                                                phi,                    #fff5e1
+icmp|fcmp|select|freeze|va_arg,                                                                     other,                  #a1afa2
+landingpad|catchpad|cleanuppad,                                                                     exception,              #edfffc
+llvmllvm.\*,                                                                                        intrinsic,              #c3e6ff
+\*,                                                                                                 undef,                  #ffffff

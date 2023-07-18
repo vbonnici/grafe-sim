@@ -1,50 +1,52 @@
-# grafe-sim
-Code similarity via graph-based features
+# Python source code
 
-
-
-# Project structure
-
-### ```/GraphGrepSX```
-
-This folder contains a modified version on
-[GraphGrepSX](https://github.com/InfOmics/GraphGrepSX). The changes concern
-the creation of an additional XML output of input graphs index (as prefix tree).
-
-
-### ```/llvmGrammars```
-This folder contains the BNF grammars in *G4* format of LLVM-IR 7.0.0
-language. The original grammar description can be found on LLVM mailing
-list at this [link](https://lists.llvm.org/pipermail/llvm-dev/2018-June/123851.html).
-
-### ```/py```
-This folder contains all the source files regarging the execution pipeline.
 This folder contain `ccpt` python package.
 The source code is located in `/src` directory and the unit tests in
 `/tests` directory.
 
-### ```/analysis```
-This folder contains some workflow examples of the clustering and classification
-problems. They are both contained inside a *jupyter notebook*.
+## Prerequisites
 
-### ```/maps```
-
-This folder contains a set of ```.csv``` files which represents
-some predefinite maps that can be used for A-CFG creation.
-# Setup
-
-<!-- In order to install and use `ccpt` follow the following steps:
+In order to install and use `ccpt` follow the following steps:
 
 1. Install python requirements
 2. Install OS requirements: clang/opt v7.0.0, graphviz
 3. Install `ccpt` package in editor mode
-4. Compile GraphGrepSX on your own machine 
-....
-....
+4. Compile GraphGrepSX on your own machine
 
--->
+### 1. python requirements
 
-## Clang/opt
+To install python requirements it is raccomanded to create a new virtual
+environment:
+```sh
+python3 -m venv venv
+```
+To activate the virtual environment `venv`:
+- Linux/MacOS
+
+    ```sh
+    source venv/bin/activate
+    ```
+- Windows
+
+    ```sh
+    venv\Scripts\activate
+    ```
+To install requirements for the project in the virtual environment
+`venv`:
+```sh
+(venv)$ pip install -r requirements.txt
+```
+To install also additional requirements for development:
+```sh
+(venv)$ pip install -r requirements_dev.txt
+```
+
+(To deactivate venv):
+```
+(venv)$ deactivate
+
+```
+### 2. OS requirements (clang/opt)
 <!--
 Also required:.
  - `clang` (1:14.0-55~exp2)
@@ -84,67 +86,26 @@ opt-7 --version
 llvm-cxxfilt-7 --version
 ```
 
-## Graphviz
-To install graphviz on Ubuntu:
+Graphviz:
+(Ubuntu)
 ```
 sudo apt install graphviz
 ```
 
-## ggsx
-
-To compile GraphGrepSX on your own machine:
-```sh
-cd /GraphGrepSX
-make clean
-make -B
-cp ggsx /py/src/ccpt/cfg_to_trie
-```
-<!-- TODO: check last step with new project structure. -->
-
-## ```ccpt``` Python package
-
-### 1. Python requirements
-
-To install Python requirements it is raccomanded to create a new virtual
-environment:
-```sh
-python3 -m venv venv
-```
-To activate the virtual environment `venv`:
-- Linux/MacOS
-
-    ```sh
-    source venv/bin/activate
-    ```
-- Windows
-
-    ```sh
-    venv\Scripts\activate
-    ```
-To install requirements for the project in the virtual environment
-`venv`:
-```sh
-(venv)$ pip install -r py/requirements.txt
-```
-To install also additional requirements for development:
-```sh
-(venv)$ pip install -r py/requirements_dev.txt
-```
-
-(To deactivate venv):
-```
-(venv)$ deactivate
-
-```
 ### 3. ccpt package in editor mode
 
 From virtual environment:
 ```sh
-(venv)$ pip install -e py/
+(venv)$ pip install -e .
 ```
 
-<!-- README OLD -->
-
+### 4. Compile GraphGrepSX on your own machine
+```sh
+cd ../GraphGrepSX
+make clean
+make -B
+cp ggsx ../py/src/ccpt/cfg_to_trie
+```
 <!--
 This folder contains the following modules:
 - `aug.py`
@@ -164,28 +125,51 @@ This folder contains the following modules:
 
     Starting from `.c` produces a set of `.dot` files (one for each function in the file) that contains the CFG (of each function) generated using CLANG compiler. Optionally, it can produce `.ll` file containing the LLVM-IR code and the `.pdf`s of the CFGs.\
     As default, output files will be saved in `./out-pp` directory (overwriting any old file with the same name).
+
+
+**Usage**:
+
+```
+pre-processing.py [-h] [-p] [-l] [-o OUT_DIR] FILENAME
+```
+
+Positional arguments:
+
+```
+FILENAME              input file (.c)
+```
+
+Options:
+
+````
+-h, --help            show this help message and exit
+-p, --emit-pdf        generate pdf file(s) for each .dot file generated (default: False)
+-l, --emit-llvm       save intermidiate llvm-ir file generated (default: False)
+-o OUT_DIR, --out-dir OUT_DIR
+                        output directory (default: out-pp)
+```
 -->
 
-# Usage
+## Usage
 
 Test if `ccpt` is installed:
 ```sh
 pip show ccpt
 ```
-<!-- To check if everything works, go into `../examples/mwe` directory and
-follow the instructions. -->
+To check if everything works, go into `../examples/mwe` directory and
+follow the isntructions.
 
 
 For description and usage of `ccpt`:
-- [README of cfg_to_trie](./py/src/ccpt/cfg_to_trie/README.md)
-- [README of compare_tries](./py/src/ccpt/compare_tries/README.md)
+- [README of cfg_to_trie](./src/ccpt/cfg_to_trie/README.md)
+- [README of compare_tries](./src/ccpt/compare_tries/README.md)
 
 Launch jupyter notebook server:
 ```sh
 python -m jupyter notebook
 ```
 
-<!-- 
+
 ... TODO ...
 ## Unit testing
 
@@ -204,4 +188,4 @@ To run the unit-tests:
     ```
     pip install pipreqs
     ```
- -->
+

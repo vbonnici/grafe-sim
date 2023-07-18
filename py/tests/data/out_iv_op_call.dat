@@ -1,0 +1,542 @@
+#### TERMINATOR OP
+
+## RET
+op:ret
+op:ret
+op:ret
+op:ret
+op:ret
+op:ret
+op:ret
+op:ret
+op:ret
+op:ret
+
+## BR
+op:br
+op:br
+op:br
+op:br
+op:br
+
+## SWITCH
+op:switch
+op:switch
+op:switch
+op:switch
+
+## INDIRECTBR (not found)
+op:indirectbr
+
+## INVOKE (not found)
+# in the docs' examples seems that invoke is a valueInstruction
+# but it is not looking in the grammar
+#%retval = invoke i32 @Test(i32 15) to label %Continue unwind label %TestCleanup              ; i32:retval set
+#%retval = invoke coldcc i32 %Testfnptr(i32 15) to label %Continue unwind label %TestCleanup              ; i32:retval set
+op:invoke
+op:invoke
+
+## RESUME (not found)
+op:resume
+
+## CATCHSWITCH (not found)
+# Same as 'invoke'.
+#%cs1 = catchswitch within none [label %handler0, label %handler1] unwind to caller
+#%cs2 = catchswitch within %parenthandler [label %handler0] unwind label %cleanup
+op:catchswitch
+op:catchswitch
+
+## CATCHRETURN (not found)
+op:catchret
+
+## CLEANUPRET (not found)
+op:cleanupret
+op:cleanupret
+
+## UNREACHABLE
+op:unreachable
+
+#### BINARY OP
+
+## ADD
+op:add
+op:add
+op:add
+op:add
+op:add
+op:add
+op:add
+op:add
+
+## FADD
+op:fadd
+op:fadd
+op:fadd
+op:fadd
+op:fadd
+
+## SUB
+op:sub
+op:sub
+op:sub
+op:sub
+op:sub
+op:sub
+op:sub
+op:sub
+
+## FSUB
+op:fsub
+op:fsub
+op:fsub
+op:fsub
+op:fsub
+
+## MUL
+op:mul
+op:mul
+op:mul
+op:mul
+op:mul
+op:mul
+op:mul
+op:mul
+op:mul
+op:mul
+
+## FMUL
+op:fmul
+op:fmul
+op:fmul
+op:fmul
+op:fmul
+op:fmul
+op:fmul
+op:fmul
+op:fmul
+op:fmul
+op:fmul
+op:fmul
+op:fmul
+
+## UDIV
+op:udiv
+
+## SDIV
+op:sdiv
+op:sdiv
+op:sdiv
+op:sdiv
+op:sdiv
+op:sdiv
+
+## FDIV
+op:fdiv
+op:fdiv
+op:fdiv
+op:fdiv
+op:fdiv
+op:fdiv
+op:fdiv
+op:fdiv
+
+## UREM
+op:urem
+op:urem
+op:urem
+op:urem
+
+## SREM
+op:srem
+op:srem
+op:srem
+op:srem
+op:srem
+op:srem
+op:srem
+op:srem
+
+## FREM (not found)
+op:frem
+
+#### BITWISE BINARY OP
+
+## SHL
+op:shl
+op:shl
+op:shl
+op:shl
+op:shl
+op:shl
+op:shl
+
+## LSHR (not found)
+op:lshr
+op:lshr
+op:lshr
+op:lshr
+op:lshr
+op:lshr
+
+## ASHR
+op:ashr
+op:ashr
+op:ashr
+op:ashr
+op:ashr
+op:ashr
+op:ashr
+op:ashr
+
+## AND
+op:and
+op:and
+op:and
+
+## OR (not found)
+op:or
+op:or
+op:or
+
+## XOR
+op:xor
+op:xor
+op:xor
+op:xor
+op:xor
+op:xor
+op:xor
+op:xor
+op:xor
+
+#### VECTOR OP
+
+## EXTRACTELEMENT (not found)
+op:extractelement
+
+## INSERTELEMENT (not found)
+op:insertelement
+
+## SHUFFLEVECTOR (not found)
+op:shufflevector
+op:shufflevector
+op:shufflevector
+op:shufflevector
+
+#### AGGREGATE OP
+
+## EXTRACTVALUE (not found)
+op:extractvalue
+
+## INSERTVALUE (not found)
+op:insertvalue
+op:insertvalue
+op:insertvalue
+
+#### MEMORY ACCESS AND ADDRESSING OP
+
+## ALLOCA
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+op:alloca
+
+## LOAD
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+op:load
+
+## STORE
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+op:store
+
+## FENCE (not found)
+
+op:fence
+op:fence
+op:fence
+
+## CMPXCHG (not found)
+# Same as 'invoke'.
+#%val_success = cmpxchg i32* %ptr, i32 %cmp, i32 %squared acq_rel monotonic ; yields  { i32, i1 }
+op:cmpxchg
+
+## ATOMICRMW (not found)
+#Same as 'invoke'.
+#%old = atomicrmw add i32* %ptr, i32 1 acquire                        ; yields i32
+op:atomicrmw
+
+## GETELEMENTPTR
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+op:getelementptr
+
+## CONVERSION OP
+op:trunc
+op:trunc
+op:zext
+op:zext
+op:zext
+op:sext
+op:sext
+op:sext
+op:fptrunc
+op:fptrunc
+op:fptrunc
+op:fpext
+op:fpext
+op:fpext
+op:fpext
+op:fptoui
+op:fptoui
+op:fptoui
+op:fptoui
+op:fptosi
+op:fptosi
+op:fptosi
+op:fptosi
+op:fptosi
+op:uitofp
+op:uitofp
+op:uitofp
+op:sitofp
+op:sitofp
+op:sitofp
+op:sitofp
+op:sitofp
+op:ptrtoint
+op:ptrtoint
+op:ptrtoint
+op:inttoptr
+op:inttoptr
+op:inttoptr
+op:inttoptr
+op:bitcast
+op:bitcast
+op:bitcast
+op:bitcast
+op:bitcast
+op:bitcast
+op:bitcast
+op:bitcast
+op:bitcast
+# From docs. Not working.
+#%Y = bitcast i32* %x to sint*          ; yields sint*:%x
+#%Z = bitcast <2 x int> %V to i64;        ; yields i64: %V
+op:bitcast
+op:addrspacecast
+op:addrspacecast
+op:addrspacecast
+
+#### OTHER OP
+
+## ICMP
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+op:icmp
+
+## FCMP
+op:fcmp
+op:fcmp
+op:fcmp
+op:fcmp
+op:fcmp
+op:fcmp
+op:fcmp
+op:fcmp
+op:fcmp
+op:fcmp
+op:fcmp
+
+## PHI
+op:phi
+op:phi
+op:phi
+op:phi
+
+## SELECT
+op:select
+op:select
+op:select
+
+## CALL
+op:call call:@convertTemp ; %25 = call double @convertTemp(double %24, i32 1, i32 1)
+op:call call:@menu ; call void @menu()
+op:call call:@bubble_sort_algo ; %1 = call i32 @bubble_sort_algo()
+op:call call:@exit ; call void @exit(i32 1) #3
+op:call call:@main ; %12 = call i32 @main()
+op:call call:@linear_search ; call void @linear_search()
+op:call call:@llvm.memcpy.p0i8.p0i8.i64 ; call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 4 %11, i8* align 4 %12, i64 8, i1 false)
+op:call call:@qsort ; call void @qsort(i8* bitcast ([5 x %struct.rect]* @r to i8*), i64 5, i64 8, i32 (i8*, i8*)* @area_comp)
+op:call call:@pthread_mutex_unlock ; %27 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* @lock) #4
+op:call call:@sleep ; %28 = call i32 @sleep(i32 10)
+op:call call:@time ; %1 = call i64 @time(i64* null) #4
+op:call call:@srand ; call void @srand(i32 %2) #4
+op:call call:@getRandom ; %19 = call i32 @getRandom(i32 0, i32 %18)
+op:call call:@secondLine ; call void @secondLine(i32 %54, i32 %55, i32 %56, i8 signext %57)
+op:call call:bitcast(i32(...)*@scanf_stoi32(i8*,i32*,...)*) ; %28 = call i32 (i8*, i32*, ...) bitcast (i32 (...)* @scanf_s to i32 (i8*, i32*, ...)*)(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.9, i32 0, i32 0), i32* %11)
+op:call call:@malloc ; %20 = call noalias i8* @malloc(i64 %19) #3
+op:call call:@printf ; %9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([34 x i8], [34 x i8]* @.str.1, i32 0, i32 0), i32 %8)
+op:call call:@time ; %14 = call i64 @time(i64* null) #3
+op:call call:@llvm.memcpy.p0i8.p0i8.i64 ; call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 4 %51, i8* align 4 %52, i64 8, i1 false)
+op:call call:@spiral_matrix ; call void @spiral_matrix(i32 4, i32 3, [3 x i32]* %4)
+op:call call:@llvm.fabs.f64 ; %11 = call double @llvm.fabs.f64(double %10)
+op:call call:@__isoc99_scanf ; %3 = call i32 (i8*, ...) @__isoc99_scanf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32* %2)
+op:call call:@squareRoot ; %5 = call double @squareRoot(i32 %4)
+op:call call:@printf ; %6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.1, i32 0, i32 0), double %5)
+op:call call:@llvm.fabs.f64 ; %11 = call double @llvm.fabs.f64(double %10)
+op:call call:@__isoc99_scanf ; %3 = call i32 (i8*, ...) @__isoc99_scanf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32* %2)
+op:call call:@squareRoot ; %5 = call double @squareRoot(i32 %4)
+op:call call:@__isoc99_scanf ; %6 = call i32 (i8*, ...) @__isoc99_scanf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.1, i32 0, i32 0), i8* %5)
+op:call call:@stringLength ; %9 = call i32 @stringLength(i8* %8)
+op:call call:@puts ; %11 = call i32 @puts(i8* getelementptr inbounds (%struct.student, %struct.student* @s, i32 0, i32 0, i32 0))
+op:call call:@__isoc99_scanf ; %10 = call i32 (i8*, ...) @__isoc99_scanf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.1, i32 0, i32 0), i8* %9)
+op:call call:@sqrt ; %34 = call double @sqrt(double %33) #5
+op:call call:@strcmp ; %45 = call i32 @strcmp(i8* %44, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.5, i32 0, i32 0)) #4
+op:call call:@pow ; %81 = call double @pow(double %80, double 2.000000e+00) #5
+op:call call:@printf ; %10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.3, i32 0, i32 0))
+op:call call:@test ; %retval = call i32 @test(i32 %argc)
+op:call call:@printf ; call i32 (i8*, ...)* @printf(i8* %msg, i32 12, i8 42)        ; yields i32
+op:call call:@foo ; %X = tail call i32 @foo()                                    ; yields i32
+op:call call:@foo ; %Y = tail call fastcc i32 @foo()  ; yields i32
+    ; # From docs. Not working.docs. Not working.
+    ; #call void %foo(i8 97 signext)oid %foo(i8 97 signext)
+op:call call:@foo ; %r = call %struct.A @foo()                        ; yields { i32, i8 }
+op:call call:@foo ; %Z = call void @foo() noreturn                    ; indicates that %foo never returns normally
+op:call call:@bar ; %ZZ = call zeroext i32 @bar()                     ; Return value is %zero extended
+
+## VA_ARG (not found)
+op:va_arg
+
+## LANDINGPAD (not found)
+op:landingpad
+op:landingpad
+# From docs. Not working.
+#%res = landingpad { i8*, i32 } catch i8** @_ZTIi filter [1 x i8**] [@_ZTId] ;; A landing pad which can catch an integer and can only throw a double.
+# Not working.
+#%0 = landingpad { i8*, i32 } filter [0 x i8*] zeroinitializer
+
+## CATCHPAD (not found)
+op:catchpad
+
+## CLEANUPPAD (not found)
+op:cleanuppad

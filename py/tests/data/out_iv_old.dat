@@ -1,0 +1,10 @@
+write:%retval op:alloca %retval:i32
+write:%A op:alloca %A:array-of-i32
+write:%n op:alloca %n:i32
+op:store const:0 write:%retval
+op:bitcast write:%0 read:%A %0:pointer-type
+op:call read:%0 const-expr:bitcast([5xi32]*@main.Atoi8*) const:20 const:false call:@llvm.memcpy.p0i8.p0i8.i64
+op:store const:5 write:%n
+op:call call:@printf %call:i32 const-expr:getelementptrinbounds([11xi8],[11xi8]*@.str,i320,i320) write:%call
+write:%arraydecay op:getelementptr read:%A %arraydecay:pointer-to-array-of-i32
+%1:i32 op:load write:%1 read:%n

@@ -1,0 +1,542 @@
+#### TERMINATOR OP
+
+## RET
+const:0 ; ret i32 0
+; ret void
+; ret double %62
+; ret i32 %75
+; ret i8 %47
+; ret i64* %73
+const:4 const:2 const:{i324,i82} ; ret { i32, i8 } { i32 4, i8 2 }
+; ret %struct.node* %26
+; ret i64 %42
+; ret double %22
+
+## BR
+; br i1 %18, label %19, label %24
+; br label %35
+const:true ; br i1 true, label %12, label %76
+; br label %7
+; br i1 %9, label %10, label %57
+
+## SWITCH
+const:1 const:2 const:3; switch i32 %8, label %61 [ i32 1, label %9 i32 2, label %25 i32 3, label %42 ]
+const:1 const:2 const:3 const:4 const:5 const:6; switch i32 %22, label %53 [ i32 1, label %23 i32 2, label %28 i32 3, label %33 i32 4, label %38 i32 5, label %43 i32 6, label %48 ]
+const:0 const:1 const:2 const:3 const:4 const:5 const:6 const:7 const:8 const:9; switch i64 %25, label %46 [ i64 1, label %26 i64 2, label %28 i64 3, label %30 i64 4, label %32 i64 5, label %34 i64 6, label %36 i64 7, label %38 i64 8, label %40 i64 9, label %42 i64 0, label %44 ]
+const:0; switch i32 0, label %dest [ ]
+
+## INDIRECTBR (not found)
+; indirectbr i8* %Addr, [ label %bb1, label %bb2, label %bb3 ]
+
+## INVOKE (not found)
+# in the docs' examples seems that invoke is a valueInstruction
+# but it is not looking in the grammar
+#%retval = invoke i32 @Test(i32 15) to label %Continue unwind label %TestCleanup              ; i32:retval set
+#%retval = invoke coldcc i32 %Testfnptr(i32 15) to label %Continue unwind label %TestCleanup              ; i32:retval set
+const:15; invoke i32 @Test(i32 15) to label %Continue unwind label %TestCleanup              ; i32:retval set
+const:15; invoke coldcc i32 %Testfnptr(i32 15) to label %Continue unwind label %TestCleanup              ; i32:retval set
+
+## RESUME (not found)
+; resume { i8*, i32 } %exn
+
+## CATCHSWITCH (not found)
+# Same as 'invoke'.
+#%cs1 = catchswitch within none [label %handler0, label %handler1] unwind to caller
+#%cs2 = catchswitch within %parenthandler [label %handler0] unwind label %cleanup
+const:none ; catchswitch within none [label %handler0, label %handler1] unwind to caller
+; catchswitch within %parenthandler [label %handler0] unwind label %cleanup
+
+## CATCHRETURN (not found)
+; catchret from %catch to label %continue
+
+## CLEANUPRET (not found)
+; cleanupret from %cleanup unwind to caller
+; cleanupret from %cleanup unwind label %continue
+
+## UNREACHABLE
+; unreachable
+
+#### BINARY OP
+
+## ADD
+; %22 = add nsw i32 %20, %21
+const:1 ; %17 = add nsw i32 %16, 1
+const:-1; %30 = add nsw i32 %29, -1
+; %34 = add i32 %29, %33
+const:1 ; %43 = add i32 %42, 1
+const:1 ; %14 = add nsw i64 %13, 1
+const:1 ; %36 = add i8 %35, 1
+const:1 ; %17 = add i64 %16, 1
+
+## FADD
+const:2.731500e+02 ; %14 = fadd double %13, 2.731500e+02
+; %19 = fadd double %18, %16
+const:2.731500e+02 ; %7 = fadd double %6, 2.731500e+02
+; %16 = fadd float %14, %15
+const:1.000000e+00; %16 = fadd float 1.000000e+00, %15
+
+## SUB
+const:1; %4 = sub nsw i32 %3, 1
+; %45 = sub nsw i32 %40, %44
+; %57 = sub nsw i32 %52, %56
+const:1; %13 = sub i32 %12, 1
+; %13 = sub nsw i64 %11, %12
+; %19 = sub nsw i64 %17, %18
+const:1; %26 = sub nsw i64 %25, 1
+const:1; %17 = sub nsw i64 %16, 1
+
+## FSUB
+const:2.731500e+02 ; %30 = fsub double %29, 2.731500e+02
+const:2.731500e+02 ; %36 = fsub double %35, 2.731500e+02
+; %31 = fsub float %29, %30
+const:3.200000e+01 ; %6 = fsub float %5, 3.200000e+01
+; %12 = fsub float %9, %11
+
+## MUL
+; %27 = mul nsw i32 %25, %26
+; %30 = mul nsw i32 %28, %29
+const:3 ; %14 = mul i32 3, %13
+const:2; %29 = mul i32 2, %28
+; %33 = mul i32 %31, %32
+const:8 ; %15 = mul i64 %14, 8
+const:8 ; %19 = mul i64 %18, 8
+const:2 ; %14 = mul nsw i32 %13, 2
+; %30 = mul nsw i64 %26, %29
+; %38 = mul nsw i64 %34, %37
+
+## FMUL
+const:9.000000e+00 ; %20 = fmul double %19, 9.000000e+00
+const:9.000000e+00 ; %37 = fmul double %36, 9.000000e+00
+const:3.140000e+00 ; %9 = fmul double 3.140000e+00, %8
+; %12 = fmul double %9, %11
+const:6.280000e+00 ; %16 = fmul double 6.280000e+00, %15
+; %10 = fmul double %7, %9
+; %46 = fmul float %44, %45
+const:0x3FB3333333333333 ; %15 = fmul double 0x3FB3333333333333, %14
+const:5.000000e+00 ; %7 = fmul float %6, 5.000000e+00
+; %17 = fmul float %13, %16
+; %21 = fmul double %13, %20
+const:1.200000e+01 ; %15 = fmul float %14, 1.200000e+01
+const:1.000000e+02 ; %26 = fmul float %25, 1.000000e+02
+
+## UDIV
+const:10 ; %19 = udiv i32 %18, 10
+
+## SDIV
+const:10 ; %15 = sdiv i32 %14, 10
+const:2 ; %18 = sdiv i32 %17, 2
+const:10 ; %24 = sdiv i64 %23, 10
+const:2 ; %18 = sdiv i64 %17, 2
+; %23 = sdiv i64 %21, %22
+; %46 = sdiv i64 %44, %45
+
+## FDIV
+const:5.000000e+00 ; %21 = fdiv double %20, 5.000000e+00
+const:5.000000e+00 ; %38 = fdiv double %37, 5.000000e+00
+; %23 = fdiv float %21, %22
+; %66 = fdiv float %64, %65
+const:9.000000e+00 ; %8 = fdiv float %7, 9.000000e+00
+const:1.000000e+02 ; %15 = fdiv float %14, 1.000000e+02
+; %34 = fdiv double %26, %33
+; %18 = fdiv double %16, %17
+
+## UREM
+const:3 ; %23 = urem i32 %22, 3
+const:10 ; %14 = urem i32 %13, 10
+const:12 ; %21 = urem i64 %20, 12
+; %18 = urem i32 %14, %17
+
+## SREM
+const:10 ; %25 = srem i32 %24, 10
+; %30 = srem i32 %28, %29
+const:10 ; %11 = srem i64 %10, 10
+; %38 = srem i32 %36, %37
+; %49 = srem i64 %47, %48
+; %26 = srem i64 %24, %25
+const:2 ; %6 = srem i32 %5, 2
+const:1000000007 ; %25 = srem i64 %24, 1000000007
+
+## FREM (not found)
+const:4.0 ; %X = frem float 4.0, %var
+
+#### BITWISE BINARY OP
+
+## SHL
+; %7 = shl i32 %5, %6
+const:1 ; %27 = shl i64 %26, 1
+const:4 ; %result = shl i32 4, %var   ; yields i32: 4 << %var
+const:4 const:2 ; %result = shl i32 4, 2      ; yields i32: 16
+const:1 const:10 ; %result = shl i32 1, 10     ; yields i32: 1024
+const:1 const:32; %result = shl i32 1, 32     ; undefined
+const:<i321,i321> const:1 const:<i321,i322> const:2 ; %result = shl <2 x i32> < i32 1, i32 1>, < i32 1, i32 2>   ; yields: result=<2 x i32> < i32 2, i32 4>
+
+## LSHR (not found)
+const:4 const:1 ; %result = lshr i32 4, 1   ; yields i32:result = 2
+const:4 const:2; %result = lshr i32 4, 2   ; yields i32:result = 1
+const:4 const:3 ; %result = lshr i8  4, 3   ; yields i8:result = 0
+const:-2 const:1 ; %result = lshr i8 -2, 1   ; yields i8:result = 0x7F
+const:1 const:32 ; %result = lshr i32 1, 32  ; undefined
+const:-2 const:4 const:1 const:2 const:<i32-2,i324> const:<i321,i322> ; %result = lshr <2 x i32> < i32 -2, i32 4>, < i32 1, i32 2>   ; yields: result=<2 x i32> < i32 0x7FFFFFFF, i32 1>
+
+## ASHR
+; %14 = ashr i32 %12, %13
+const:1 ; %25 = ashr i64 %24, 1
+const:4 const:1 ; %result = ashr i32 4, 1   ; yields i32:result = 2
+const:4 const:2 ; %result = ashr i32 4, 2   ; yields i32:result = 1
+const:4 const:3 ; %result = ashr i8  4, 3   ; yields i8:result = 0
+const:-2 const:1 ; %result = ashr i8 -2, 1   ; yields i8:result = -1
+const:1 const:32 ; %result = ashr i32 1, 32  ; undefined
+const:-2 const:4 const:1 const:3 const:<i32-2,i324> const:<i321,i323> ; %result = ashr <2 x i32> < i32 -2, i32 4>, < i32 1, i32 3>   ; yields: result=<2 x i32> < i32 -1, i32 0>
+
+## AND
+; %7 = and i32 %5, %6
+; %8 = and i32 %7, %6
+const:1 ; %16 = and i32 %15, 1
+
+## OR (not found)
+const:4 ; %result = or i32 4, %var         ; yields i32:result = 4 | %var
+const:15 const:40 ; %result = or i32 15, 40          ; yields i32:result = 47
+const:4 const:8 ; %result = or i32 4, 8            ; yields i32:result = 12
+
+## XOR
+const:-1 ; %5 = xor i32 %4, -1
+; %25 = xor i32 %18, %24
+; %8 = xor i32 %6, %7
+; %11 = xor i32 %9, %10
+; %14 = xor i32 %12, %13
+const:4 ; %result = xor i32 4, %var         ; yields i32:result = 4 ^ %var
+const:15 const:40 ; %result = xor i32 15, 40          ; yields i32:result = 39
+const:4 const:8 ; %result = xor i32 4, 8            ; yields i32:result = 12
+const:-1 ; %result = xor i32 %V, -1          ; yields i32:result = ~%V
+
+#### VECTOR OP
+
+## EXTRACTELEMENT (not found)
+const:0 ; %result = extractelement <4 x i32> %vec, i32 0    ; yields i32
+
+## INSERTELEMENT (not found)
+const:1 const:0; %result = insertelement <4 x i32> %vec, i32 1, i32 0    ; yields <4 x i32>
+
+## SHUFFLEVECTOR (not found)
+const:<i320,i324,i321,i325> const:0 const:4 const:1 const:5 ; %result = shufflevector <4 x i32> %v1, <4 x i32> %v2, <4 x i32> <i32 0, i32 4, i32 1, i32 5>  ; yields <4 x i32>
+const:<i320,i321,i322,i323> const:0 const:1 const:2 const:3 const:undef ; %result = shufflevector <4 x i32> %v1, <4 x i32> undef, <4 x i32> <i32 0, i32 1, i32 2, i32 3>  ; yields <4 x i32> - Identity shuffle.
+const:<i320,i321,i322,i323> const:0 const:1 const:2 const:3 const:undef ; %result = shufflevector <8 x i32> %v1, <8 x i32> undef, <4 x i32> <i32 0, i32 1, i32 2, i32 3>  ; yields <4 x i32>
+const:<i320,i321,i322,i323,i324,i325,i326,i327> const:0 const:1 const:2 const:3 const:4 const:5 const:6 const:7 ; %result = shufflevector <4 x i32> %v1, <4 x i32> %v2, <8 x i32> <i32 0, i32 1, i32 2, i32 3, i32 4, i32 5, i32 6, i32 7 >  ; yields <8 x i32>
+
+#### AGGREGATE OP
+
+## EXTRACTVALUE (not found)
+; %result = extractvalue {i32, float} %agg, 0    ; yields i32 ; seems that 0 is a 'index' and not a 'constant'
+
+## INSERTVALUE (not found)
+const:undef const:1 ; %agg1 = insertvalue {i32, float} undef, i32 1, 0              ; yields {i32 1, float undef}
+; %agg2 = insertvalue {i32, float} %agg1, float %val, 1         ; yields {i32 1, float %val}
+const:undef ; %agg3 = insertvalue {i32, {float}} undef, float %val, 1, 0    ; yields {i32 undef, {float %val}}
+
+#### MEMORY ACCESS AND ADDRESSING OP
+
+## ALLOCA
+; %1 = alloca i32, align 4
+; %4 = alloca double, align 8
+; %6 = alloca i32, align 4
+; %7 = alloca double, align 8
+; %2 = alloca float, align 4
+; %3 = alloca float, align 4
+; %7 = alloca %struct.rect, align 4
+; %8 = alloca %struct.rect, align 4
+; %4 = alloca i8, align 1
+; %7 = alloca i8, align 1
+; %4 = alloca i32*, align 8
+; %5 = alloca i32*, align 8
+; %8 = alloca [10 x i32], align 16
+; %2 = alloca [6 x i32], align 16
+; %2 = alloca double, align 8
+; %3 = alloca double, align 8
+; %4 = alloca float, align 4
+; %13 = alloca i32, i64 %11, align 16
+; %16 = alloca i32, i64 %15, align 16
+; %2 = alloca [20 x i8], align 16
+; %6 = alloca i8**, align 8
+; %7 = alloca i8**, align 8
+; %5 = alloca i8**, align 8
+; %2 = alloca [100 x i8], align 16
+; %1 = alloca [20 x [20 x i8]], align 16
+; %2 = alloca %struct.lcg_rand*, align 8
+; %3 = alloca %struct.node*, align 8
+; %6 = alloca i32*, align 8
+; %3 = alloca %struct.task, align 4
+; %4 = alloca %struct.task*, align 8
+; %2 = alloca %struct.task**, align 8
+
+## LOAD
+; %16 = load i32, i32* %4, align 4
+; %8 = load i32, i32* %5, align 4
+; %10 = load i32, i32* %6, align 4
+; %13 = load double, double* %4, align 8
+; %24 = load double, double* %3, align 8
+; %7 = load float, float* %2, align 4
+; %10 = load float, float* %2, align 4
+; %3 = load i32, i32* @position, align 4
+; %14 = load i32, i32* @n, align 4
+; %8 = load i8, i8* %7, align 1
+; %16 = load i8, i8* %7, align 1
+; %21 = load float, float* %11, align 4
+; %22 = load float, float* %12, align 4
+; %20 = load i32*, i32** %5, align 8
+; %27 = load i32*, i32** %7, align 8
+; %15 = load i8*, i8** %11, align 8
+; %8 = load %struct._IO_FILE*, %struct._IO_FILE** @stdin, align 8
+; %24 = load i64, i64* %2, align 8
+; %26 = load i64, i64* %2, align 8
+; %80 = load i8*, i8** %5, align 8
+; %58 = load i64*, i64** %8, align 8
+; %18 = load i8**, i8*** %7, align 8
+; %50 = load i16, i16* %5, align 2
+; %4 = load %struct.lcg_rand*, %struct.lcg_rand** %2, align 8
+; %1 = load %struct.node*, %struct.node** @first, align 8
+; %24 = load %struct.node*, %struct.node** @head, align 8
+; %27 = load [3 x i32]*, [3 x i32]** %6, align 8
+; %48 = load [3 x i32]*, [3 x i32]** %6, align 8
+const-expr:getelementptrinbounds(%struct.student,%struct.student*@s,i320,i321) const:0 const:1 ; %12 = load i32, i32* getelementptr inbounds (%struct.student, %struct.student* @s, i32 0, i32 1), align 4
+const-expr:getelementptrinbounds(%struct.student,%struct.student*@s,i320,i322) const:0 const:2 ; %14 = load float, float* getelementptr inbounds (%struct.student, %struct.student* @s, i32 0, i32 2), align 4
+
+## STORE
+const:0 ; store i32 0, i32* %1, align 44
+; store double %0, double* %4, align 8
+const:0 ; store i32 0, i32* %1, align 4
+; store float %17, float* %4, align 4
+const:20 ; store i32 20, i32* @choice, align 4
+; store i8* %0, i8** %3, align 8
+const-expr:getelementptrinbounds([5x%struct.rect],[5x%struct.rect]*@r,i640,i640,i320) const:10 const:0; store i32 10, i32* getelementptr inbounds ([5 x %struct.rect], [5 x %struct.rect]* @r, i64 0, i64 0, i32 0), align 16
+const-expr:getelementptrinbounds([5x%struct.rect],[5x%struct.rect]*@r,i640,i640,i321) const:0 const:1 const:2 ; store i32 2, i32* getelementptr inbounds ([5 x %struct.rect], [5 x %struct.rect]* @r, i64 0, i64 0, i32 1), align 4
+; store i8 %2, i8* %7, align 1
+; store i32* %5, i32** %12, align 8
+; store double %7, double* %3, align 8
+; store i64 %25, i64* %5, align 8
+const:0.000000e+00 ; store float 0.000000e+00, float* %3, align 4
+const:0.000000e+00 ; store float 0.000000e+00, float* %4, align 4
+; store i8* %12, i8** %5, align 8
+; store i8** %1, i8*** %6, align 8
+; store i8** %2, i8*** %7, align 8
+; store i16 %72, i16* %74, align 2
+; store i16 %77, i16* %79, align 2
+; store %struct.lcg_rand* %0, %struct.lcg_rand** %2, align 8
+; store %struct.node* %15, %struct.node** @tail, align 8
+; store i32 %8, i32* @printFibonacci.n3, align 4
+const:null ; store %struct.Node* null, %struct.Node** %2, align 8
+; store %struct.task* %2, %struct.task** %6, align 8
+const:0 const-expr:getelementptrinbounds([4xi8],[4xi8]*@.str,i320,i320) ; store i8* getelementptr inbounds ([4 x i8], [4 x i8]* @.str, i32 0, i32 0), i8** %2, align 8
+; store [3 x i32]* %2, [3 x i32]** %6, align 8
+const:1.000000e+00 ; store double 1.000000e+00, double* %3, align 8
+
+## FENCE (not found)
+
+; fence acquire                                        ; yields void
+; fence syncscope("singlethread") seq_cst              ; yields void
+; fence syncscope("agent") seq_cst                     ; yields void
+
+## CMPXCHG (not found)
+# Same as 'invoke'.
+#%val_success = cmpxchg i32* %ptr, i32 %cmp, i32 %squared acq_rel monotonic ; yields  { i32, i1 }
+; cmpxchg i32* %ptr, i32 %cmp, i32 %squared acq_rel monotonic ; yields  { i32, i1 }
+
+## ATOMICRMW (not found)
+#Same as 'invoke'.
+#%old = atomicrmw add i32* %ptr, i32 1 acquire                        ; yields i32
+const:1 ; atomicrmw add i32* %ptr, i32 1 acquire                        ; yields i32
+
+## GETELEMENTPTR
+const:0 ; %22 = getelementptr inbounds [100 x i32], [100 x i32]* @arr, i64 0, i64 %21
+const-expr:getelementptrinbounds([100xi32],[100xi32]*@arr,i320,i320) const:0 ; %9 = getelementptr inbounds i32, i32* getelementptr inbounds ([100 x i32], [100 x i32]* @arr, i32 0, i32 0), i64 %8
+const:0 ; %14 = getelementptr inbounds [5 x %struct.rect], [5 x %struct.rect]* @r, i64 0, i64 %13
+const:0 ; %16 = getelementptr inbounds [20 x [20 x i8]], [20 x [20 x i8]]* %1, i64 0, i64 %15
+const:0 ; %17 = getelementptr inbounds [20 x i8], [20 x i8]* %16, i32 0, i32 0
+const:0 ; %39 = getelementptr inbounds [20 x [20 x i8]], [20 x [20 x i8]]* %1, i64 0, i64 %38
+const:0 const-expr:bitcast(<{i64,[2000000xi64]}>*@factto[2000001xi64]*) ; %14 = getelementptr inbounds [2000001 x i64], [2000001 x i64]* bitcast (<{ i64, [2000000 x i64] }>* @fact to [2000001 x i64]*), i64 0, i64 %13
+; %27 = getelementptr inbounds i8, i8* %9, i64 %26
+; %14 = getelementptr inbounds i32, i32* %12, i64 %13
+const:0 ; %38 = getelementptr inbounds %struct.task, %struct.task* %3, i32 0, i32 0
+; %9 = getelementptr inbounds %struct.task, %struct.task* %6, i64 %8
+const:0 ; %10 = getelementptr inbounds %struct.task, %struct.task* %9, i64 0
+const:0 ; %21 = getelementptr inbounds [50 x i32], [50 x i32]* %2, i32 0, i32 0
+const:0 ; %32 = getelementptr inbounds [50 x i32], [50 x i32]* %2, i64 0, i64 %31
+const:2 ; %11 = getelementptr inbounds i8, i8* %10, i64 2
+; %25 = getelementptr inbounds i32, i32* %22, i64 %24
+const:0 ; %27 = getelementptr inbounds [10 x [10 x i32]], [10 x [10 x i32]]* %6, i64 0, i64 %26
+const:0 ; %4 = getelementptr inbounds [4 x [3 x i32]], [4 x [3 x i32]]* %2, i32 0, i32 0
+; %8 = getelementptr inbounds i8, i8* %5, i64 %7
+const:0 ; %5 = getelementptr inbounds [100 x i8], [100 x i8]* %3, i32 0, i32 0
+const:0 ; %69 = getelementptr inbounds [10 x i8], [10 x i8]* %6, i32 0, i32 0
+const:0 const:1 ; %aptr = getelementptr {i32, [12 x i8]}, {i32, [12 x i8]}* %saptr, i64 0, i32 1 ; yields [12 x i8]*:aptr
+const:0 const:1 ; %vptr = getelementptr {i32, <2 x i8>}, {i32, <2 x i8>}* %svptr, i64 0, i32 1, i32 1 ; yields i8*:vptr
+const:0 const:1 ; %eptr = getelementptr [12 x i8], [12 x i8]* %aptr, i64 0, i32 1 ; yields i8*:eptr
+const:0 ; %iptr = getelementptr [10 x i32], [10 x i32]* @arr, i16 0, i16 0 ; yields i32*:iptr
+
+## CONVERSION OP
+; %2 = trunc i64 %1 to i32
+; %47 = trunc i32 %46 to i8
+; %30 = zext i1 %29 to i64
+; %18 = zext i32 %17 to i64
+; %19 = zext i16 %18 to i32
+; %108 = sext i32 %107 to i64
+; %11 = sext i8 %10 to i32
+; %6 = sext i8 %5 to i32
+; %13 = fptrunc double %12 to float
+; %17 = fptrunc double %16 to float
+const:16777217.0 ; %X = fptrunc double 16777217.0 to float    ; yields float:16777216.0
+; %8 = fpext float %7 to double
+; %11 = fpext float %10 to double
+const:3.125 ; %X = fpext float 3.125 to double         ; yields double:3.125000e+00
+; %Y = fpext double %X to fp128            ; yields fp128:0xL00000000000000004000900000000000
+; %5 = fptoui double %4 to i32
+const:123.0 ; %X = fptoui double 123.0 to i32      ; yields i32:123
+const:1.0E+300 ; %Y = fptoui float 1.0E+300 to i1     ; yields undefined:1
+const:1.04E+17 ; %Z = fptoui float 1.04E+17 to i8     ; yields undefined:1
+; %31 = fptosi double %30 to i32
+; %8 = fptosi float %7 to i32
+const:-123.0 ; %X = fptosi double -123.0 to i32      ; yields i32:-123
+const:1.0E-247 ; %Y = fptosi float 1.0E-247 to i1      ; yields undefined:1
+const:1.04E+17 ; %Z = fptosi float 1.04E+17 to i8      ; yields undefined:1
+; %15 = uitofp i32 %14 to float
+const:257 ; %X = uitofp i32 257 to float         ; yields float:257.0
+const:-1 ; %Y = uitofp i8 -1 to double          ; yields double:255.0
+; %27 = sitofp i32 %26 to double
+; %20 = sitofp i32 %19 to float
+; %12 = sitofp i64 %11 to double
+const:257 ; %X = sitofp i32 257 to float         ; yields float:257.0
+const:-1 ; %Y = sitofp i8 -1 to double          ; yields double:-1.0
+; %X = ptrtoint i32* %P to i8                         ; yields truncation on 32-bit architecture
+; %Y = ptrtoint i32* %P to i64                        ; yields zero extension on 32-bit architecture
+; %Z = ptrtoint <4 x i32*> %P to <4 x i64>; yields vector zero extension for a vector of addresses on 32-bit architecture
+const:255 ; %X = inttoptr i32 255 to i32*          ; yields zero extension on 64-bit architecture
+const:255 ; %Y = inttoptr i32 255 to i32*          ; yields no-op on 32-bit architecture
+const:0 ; %Z = inttoptr i64 0 to i32*            ; yields truncation on 32-bit architecture
+; %Z = inttoptr <4 x i32> %G to <4 x i8*>; yields truncation of vector G to four pointers
+; %10 = bitcast i8* %9 to %struct.rect*
+; %11 = bitcast %struct.rect* %7 to i8*
+; %4 = bitcast [6 x i32]* %2 to i8*
+; %3 = bitcast [156 x i8]* %2 to i8*
+; %4 = bitcast i32* %2 to i8*
+; %7 = bitcast i8* %6 to i32*
+; %16 = bitcast i8* %15 to %struct.task*
+; %3 = bitcast [4 x [3 x i32]]* %2 to i8*
+const:255 ; %X = bitcast i8 255 to i8              ; yields i8 :-1
+# From docs. Not working.
+#%Y = bitcast i32* %x to sint*          ; yields sint*:%x
+#%Z = bitcast <2 x int> %V to i64;        ; yields i64: %V
+; %Z = bitcast <2 x i32*> %V to <2 x i64*> ; yields <2 x i64*>
+; %X = addrspacecast i32* %x to i32 addrspace(1)*    ; yields i32 addrspace(1)*:%x
+; %Y = addrspacecast i32 addrspace(1)* %y to i64 addrspace(2)*    ; yields i64 addrspace(2)*:%y
+; %Z = addrspacecast <4 x i32*> %z to <4 x float addrspace(3)*>   ; yields <4 x float addrspace(3)*>:%z
+
+#### OTHER OP
+
+## ICMP
+const:10 ; %12 = icmp ult i32 %11, 10
+; %12 = icmp ult <4xi32> %11, %10 ; invented
+; %9 = icmp sgt i64 %7, %8
+const:null ; %16 = icmp ne %struct.node* %15, null
+; %31 = icmp sle i32 %27, %30
+; %11 = icmp slt i32 %9, %10
+const:null ; %23 = icmp eq %struct.Node* %22, null
+const:null ; %8 = icmp ne %struct.Node* %7, null
+const:0 ; %8 = icmp ne i32 %7, 0
+; %85 = icmp sgt i32 %80, %84
+; %94 = icmp slt i32 %92, %93
+; %101 = icmp sge i32 %99, %10
+; %15 = icmp sle i32 %13, %14
+const:0 ; %46 = icmp eq i32 %45, 0
+const:0 ; %71 = icmp eq i32 %70, 0
+const:4 const:5 ; %result = icmp eq i32 4, 5          ; yields: result=false
+; %result = icmp ne float* %X, %X     ; yields: result=false
+const:4 const:5 ; %result = icmp ult i16  4, 5        ; yields: result=true
+const:4 const:5 ; %result = icmp sgt i16  4, 5        ; yields: result=false
+const:-4 const:5 ; %result = icmp ule i16 -4, 5        ; yields: result=false
+const:4 const:5 ; %result = icmp sge i16  4, 5        ; yields: result=false
+
+## FCMP
+const:0.000000e+00 ; %60 = fcmp oeq float %59, 0.000000e+00
+const:1.000000e+05 ; %29 = fcmp oge float %28, 1.000000e+05
+const:1.000000e+05 ; %37 = fcmp olt float %36, 1.000000e+05
+const:5.000000e+04 ; %42 = fcmp oge float %41, 5.000000e+04
+const:0x3E7AD7F29ABCAF48 ; %12 = fcmp ogt double %11, 0x3E7AD7F29ABCAF48
+const:0x3E7AD7F29ABCAF48 ; %12 = fcmp ogt double %11, 0x3E7AD7F29ABCAF48
+; %10 = fcmp ogt float %8, %9
+const:4.0 const:5.0 ; %result = fcmp oeq float 4.0, 5.0    ; yields: result=false
+const:4.0 const:5.0 ; %result = fcmp one float 4.0, 5.0    ; yields: result=true
+const:4.0 const:5.0 ; %result = fcmp olt float 4.0, 5.0    ; yields: result=true
+const:1.0 const:2.0; %result = fcmp ueq double 1.0, 2.0   ; yields: result=false
+
+## PHI
+const:false ; %45 = phi i1 [ false, %36 ], [ false, %32 ], [ false, %28 ], [ %43, %40 ]
+const:true ; %28 = phi i1 [ true, %19 ], [ %26, %23 ]
+; %16 = phi i32 [ %12, %11 ], [ %14, %13 ]
+; %32 = phi float [ %20, %19 ], [ %30, %29 ]
+
+## SELECT
+const:0 const:1; %31 = select i1 %29, i32 1, i32 0
+const:0 const:1 ; %23 = select i1 %21, i32 0, i32 1
+const:42 const:17 const:true ; %X = select i1 true, i8 17, i8 42          ; yields i8:17
+
+## CALL
+const:1 ; %25 = call double @convertTemp(double %24, i32 1, i32 1)
+; call void @menu()
+; %1 = call i32 @bubble_sort_algo()
+const:1 ; call void @exit(i32 1) #3
+; %12 = call i32 @main()
+; call void @linear_search()
+const:8 const:false ; call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 4 %11, i8* align 4 %12, i64 8, i1 false)
+const-expr:bitcast([5x%struct.rect]*@rtoi8*) const:5 const:8 ;call void @qsort(i8* bitcast ([5 x %struct.rect]* @r to i8*), i64 5, i64 8, i32 (i8*, i8*)* @area_comp)
+; %27 = call i32 @pthread_mutex_unlock(%union.pthread_mutex_t* @lock) #4
+const:10 ; %28 = call i32 @sleep(i32 10)
+const:null; %1 = ca6ll i64 @time(i64* null) #4
+; call void @srand(i32 %2) #4
+const:0 ; %19 = call i32 @getRandom(i32 0, i32 %18)
+; call void @secondLine(i32 %54, i32 %55, i32 %56, i8 signext %57)
+const-expr:bitcast(i32(...)*@scanf_stoi32(i8*,i32*,...)*) const-expr:getelementptrinbounds([3xi8],[3xi8]*@.str.9,i320,i320) const:0 ; %28 = call i32 (i8*, i32*, ...) bitcast (i32 (...)* @scanf_s to i32 (i8*, i32*, ...)*)(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.9, i32 0, i32 0), i32* %11)
+; %20 = call noalias i8* @malloc(i64 %19) #3
+const-expr:getelementptrinbounds([34xi8],[34xi8]*@.str.1,i320,i320) const:0 ; %9 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([34 x i8], [34 x i8]* @.str.1, i32 0, i32 0), i32 %8)
+const:null ; %14 = call i64 @time(i64* null) #3
+const:8 const:false ; call void @llvm.memcpy.p0i8.p0i8.i64(i8* align 4 %51, i8* align 4 %52, i64 8, i1 false)
+const:4 const:3 ; call void @spiral_matrix(i32 4, i32 3, [3 x i32]* %4)
+; %11 = call double @llvm.fabs.f64(double %10)
+const:0 const-expr:getelementptrinbounds([3xi8],[3xi8]*@.str,i320,i320); %3 = call i32 (i8*, ...) @__isoc99_scanf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32* %2)
+; %5 = call double @squareRoot(i32 %4)
+const:0 const-expr:getelementptrinbounds([6xi8],[6xi8]*@.str.1,i320,i320); %6 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([6 x i8], [6 x i8]* @.str.1, i32 0, i32 0), double %5)
+; %11 = call double @llvm.fabs.f64(double %10)
+const:0 const-expr:getelementptrinbounds([3xi8],[3xi8]*@.str,i320,i320); %3 = call i32 (i8*, ...) @__isoc99_scanf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str, i32 0, i32 0), i32* %2)
+; %5 = call double @squareRoot(i32 %4)
+const:0 const-expr:getelementptrinbounds([3xi8],[3xi8]*@.str.1,i320,i320); %6 = call i32 (i8*, ...) @__isoc99_scanf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.1, i32 0, i32 0), i8* %5)
+; %9 = call i32 @stringLength(i8* %8)
+const-expr:getelementptrinbounds(%struct.student,%struct.student*@s,i320,i320,i320) const:0 ; %11 = call i32 @puts(i8* getelementptr inbounds (%struct.student, %struct.student* @s, i32 0, i32 0, i32 0))
+const:0 const-expr:getelementptrinbounds([3xi8],[3xi8]*@.str.1,i320,i320) ; %10 = call i32 (i8*, ...) @__isoc99_scanf(i8* getelementptr inbounds ([3 x i8], [3 x i8]* @.str.1, i32 0, i32 0), i8* %9)
+; %34 = call double @sqrt(double %33) #5
+const:0 const-expr:getelementptrinbounds([9xi8],[9xi8]*@.str.5,i320,i320) ; %45 = call i32 @strcmp(i8* %44, i8* getelementptr inbounds ([9 x i8], [9 x i8]* @.str.5, i32 0, i32 0)) #4
+const:2.000000e+00 ; %81 = call double @pow(double %80, double 2.000000e+00) #5
+const:0 const-expr:getelementptrinbounds([33xi8],[33xi8]*@.str.3,i320,i320) ; %10 = call i32 (i8*, ...) @printf(i8* getelementptr inbounds ([33 x i8], [33 x i8]* @.str.3, i32 0, i32 0))
+; %retval = call i32 @test(i32 %argc)
+const:12 const:42 ; call i32 (i8*, ...)* @printf(i8* %msg, i32 12, i8 42)        ; yields i32
+; %X = tail call i32 @foo()                                    ; yields i32
+; %Y = tail call fastcc i32 @foo()  ; yields i32
+# From docs. Not working.
+#call void %foo(i8 97 signext)
+; %r = call %struct.A @foo()                        ; yields { i32, i8 }
+; %Z = call void @foo() noreturn                    ; indicates that %foo never returns normally
+; %ZZ = call zeroext i32 @bar()                     ; Return value is %zero extended
+
+## VA_ARG (not found)
+; %tmp = va_arg i8* %ap2, i32
+
+## LANDINGPAD (not found)
+; %res = landingpad { i8*, i32 } catch i8** @_ZTIi ;; A landing pad which can catch an integer.
+; %res = landingpad { i8*, i32 } cleanup ;; A landing pad that is a cleanup.
+# From docs. Not working.
+#%res = landingpad { i8*, i32 } catch i8** @_ZTIi filter [1 x i8**] [@_ZTId] ;; A landing pad which can catch an integer and can only throw a double.
+# Not working.
+#%0 = landingpad { i8*, i32 } filter [0 x i8*] zeroinitializer
+
+## CATCHPAD (not found)
+; %tok = catchpad within %cs [i8** @_ZTIi]
+
+## CLEANUPPAD (not found)
+; %tok = cleanuppad within %cs []

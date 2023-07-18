@@ -1,0 +1,1646 @@
+<ul>
+<li>
+	Instruction Reference
+    <ul>
+        <li>
+			Terminator Instructions
+            <ul>
+                <li>
+					ret
+                </li>
+                <li>
+					br
+
+                </li>
+                <li>
+					switch
+
+                </li>
+                <li>
+					indirectbr
+
+                </li>
+                <li>
+					invoke
+
+                </li>
+                <li>
+					callbr
+
+                </li>
+                <li>
+					resume
+
+                </li>
+                <li>
+					catchswitch
+
+                </li>
+                <li>
+					catchret
+
+                </li>
+                <li>
+					cleanupret
+
+                </li>
+                <li>
+					unreachable
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Unary Operations
+            <ul>
+                <li>
+					fneg
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Binary Operations
+            <ul>
+                <li>
+					add
+
+                </li>
+                <li>
+					fadd
+
+                </li>
+                <li>
+					sub
+
+                </li>
+                <li>
+					fsub
+
+                </li>
+                <li>
+					mul
+
+                </li>
+                <li>
+                    fmul
+                </li>
+                <li>
+					udiv
+
+                </li>
+                <li>
+					sdiv
+
+                </li>
+                <li>
+					fdiv
+
+                </li>
+                <li>
+					urem
+
+                </li>
+                <li>
+					srem
+
+                </li>
+                <li>
+					frem
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Bitwise Binary Operations
+            <ul>
+                <li>
+					shl
+
+                </li>
+                <li>
+					lshr
+
+                </li>
+                <li>
+					ashr
+
+                </li>
+                <li>
+					and
+
+                </li>
+                <li>
+					or
+
+                </li>
+                <li>
+					xor
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Vector Operations
+            <ul>
+                <li>
+					extractelement
+
+                </li>
+                <li>
+					insertelement
+
+                </li>
+                <li>
+					shufflevector
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Aggregate Operations
+            <ul>
+                <li>
+					extractvalue
+
+                </li>
+                <li>
+					insertvalue
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Memory Access and Addressing Operations
+            <ul>
+                <li>
+					alloca
+
+                </li>
+                <li>
+					load
+
+                </li>
+                <li>
+					store
+
+                </li>
+                <li>
+					fence
+
+                </li>
+                <li>
+					cmpxchg
+
+                </li>
+                <li>
+					atomicrmw
+
+                </li>
+                <li>
+					getelementptr
+                </li>
+            </ul>
+        </li>
+        <li>
+			Conversion Operations
+            <ul>
+                <li>
+					trunc .. to
+
+                </li>
+                <li>
+					zext .. to
+
+                </li>
+                <li>
+					sext .. to
+
+                </li>
+                <li>
+					fptrunc .. to
+
+                </li>
+                <li>
+					fpext .. to
+
+                </li>
+                <li>
+					fptoui .. to
+
+                </li>
+                <li>
+					fptosi .. to
+
+                </li>
+                <li>
+					uitofp .. to
+
+                </li>
+                <li>
+					sitofp .. to
+
+                </li>
+                <li>
+					ptrtoint .. to
+
+                </li>
+                <li>
+					inttoptr .. to
+
+                </li>
+                <li>
+					bitcast .. to
+
+                </li>
+                <li>
+					addrspacecast .. to
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Other Operations
+            <ul>
+                <li>
+					icmp
+
+                </li>
+                <li>
+					fcmp
+
+                </li>
+                <li>
+					phi
+
+                </li>
+                <li>
+					select
+
+                </li>
+                <li>
+					freeze
+
+                </li>
+                <li>
+					call
+
+                </li>
+                <li>
+					va_arg
+
+                </li>
+                <li>
+					landingpad
+
+                </li>
+                <li>
+					catchpad
+
+                </li>
+                <li>
+					cleanuppad
+
+                </li>
+            </ul>
+        </li>
+    </ul>
+</li>
+<li> 
+    Intrinsic Functions
+    <ul>
+        <li>
+			Variable Argument Handling Intrinsics
+            <ul>
+                <li>
+					llvm.va_start
+
+                </li>
+                <li>
+					llvm.va_end
+
+                </li>
+                <li>
+					llvm.va_copy
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Accurate Garbage Collection Intrinsics
+            <ul>
+                <li>
+					llvm.gcroot
+
+                </li>
+                <li>
+					llvm.gcread
+
+                </li>
+                <li>
+					llvm.gcwrite
+
+                </li>
+                <li>
+					llvm.experimental.gc.statepoint
+
+                </li>
+                <li>
+					llvm.experimental.gc.result
+
+                </li>
+                <li>
+					llvm.experimental.gc.relocate
+
+                </li>
+                <li>
+					llvm.experimental.gc.get.pointer.base
+
+                </li>
+                <li>
+					llvm.experimental.gc.get.pointer.offset
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Code Generator Intrinsics
+            <ul>
+                <li>
+					llvm.returnaddress
+
+                </li>
+                <li>
+					llvm.addressofreturnaddress
+
+                </li>
+                <li>
+					llvm.sponentry
+
+                </li>
+                <li>
+					llvm.frameaddress
+
+                </li>
+                <li>
+					llvm.swift.async.context.addr
+
+                </li>
+                <li>
+					llvm.localescape and llvm.localrecover
+
+                </li>
+                <li>
+					llvm.seh.try.begin and llvm.seh.try.end
+
+                </li>
+                <li>
+					llvm.seh.scope.begin and llvm.seh.scope.end
+
+                </li>
+                <li>
+					llvm.read_register, llvm.read_volatile_register, and llvm.write_register
+
+                </li>
+                <li>
+					llvm.stacksave
+
+                </li>
+                <li>
+					llvm.stackrestore
+
+                </li>
+                <li>
+					llvm.get.dynamic.area.offset
+
+                </li>
+                <li>
+					llvm.prefetch
+
+                </li>
+                <li>
+					llvm.pcmarker
+
+                </li>
+                <li>
+					llvm.readcyclecounter
+
+                </li>
+                <li>
+					llvm.clear_cache
+
+                </li>
+                <li>
+					llvm.instrprof.increment
+
+                </li>
+                <li>
+					llvm.instrprof.increment.step
+
+                </li>
+                <li>
+					llvm.instrprof.cover
+
+                </li>
+                <li>
+					llvm.instrprof.value.profile
+
+                </li>
+                <li>
+					llvm.thread.pointer
+
+                </li>
+                <li>
+					llvm.call.preallocated.setup
+
+                </li>
+                <li>
+					llvm.call.preallocated.arg
+
+                </li>
+                <li>
+					llvm.call.preallocated.teardown
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Standard C/C++ Library Intrinsics
+            <ul>
+                <li>
+					llvm.abs.*
+
+                </li>
+                <li>
+					llvm.smax.*
+
+                </li>
+                <li>
+					llvm.smin.*
+
+                </li>
+                <li>
+					llvm.umax.*
+
+                </li>
+                <li>
+					llvm.umin.*
+
+                </li>
+                <li>
+					llvm.memcpy
+
+                </li>
+                <li>
+					llvm.memcpy.inline
+
+                </li>
+                <li>
+					llvm.memmove
+
+                </li>
+                <li>
+					llvm.memset.*
+
+                </li>
+                <li>
+					llvm.sqrt.*
+
+                </li>
+                <li>
+					llvm.powi.*
+
+                </li>
+                <li>
+					llvm.sin.*
+
+                </li>
+                <li>
+					llvm.cos.*
+
+                </li>
+                <li>
+					llvm.pow.*
+
+                </li>
+                <li>
+					llvm.exp.*
+
+                </li>
+                <li>
+					llvm.exp2.*
+
+                </li>
+                <li>
+					llvm.log.*
+
+                </li>
+                <li>
+					llvm.log10.*
+
+                </li>
+                <li>
+					llvm.log2.*
+
+                </li>
+                <li>
+					llvm.fma.*
+
+                </li>
+                <li>
+					llvm.fabs.*
+
+                </li>
+                <li>
+					llvm.minnum.*
+
+                </li>
+                <li>
+					llvm.maxnum.*
+
+                </li>
+                <li>
+					llvm.minimum.*
+
+                </li>
+                <li>
+					llvm.maximum.*
+
+                </li>
+                <li>
+					llvm.copysign.*
+
+                </li>
+                <li>
+					llvm.floor.*
+
+                </li>
+                <li>
+					llvm.ceil.*
+
+                </li>
+                <li>
+					llvm.trunc.*
+
+                </li>
+                <li>
+					llvm.rint.*
+
+                </li>
+                <li>
+					llvm.nearbyint.*
+
+                </li>
+                <li>
+					llvm.round.*
+
+                </li>
+                <li>
+					llvm.roundeven.*
+
+                </li>
+                <li>
+					llvm.lround.*
+
+                </li>
+                <li>
+					llvm.llround.*
+
+                </li>
+                <li>
+					llvm.lrint.*
+
+                </li>
+                <li>
+					llvm.llrint.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Bit Manipulation Intrinsics
+            <ul>
+                <li>
+					llvm.bitreverse.*
+
+                </li>
+                <li>
+					llvm.bswap.*
+
+                </li>
+                <li>
+					llvm.ctpop.*
+
+                </li>
+                <li>
+					llvm.ctlz.*
+
+                </li>
+                <li>
+					llvm.cttz.*
+
+                </li>
+                <li>
+					llvm.fshl.*
+
+                </li>
+                <li>
+					llvm.fshr.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Arithmetic with Overflow Intrinsics
+            <ul>
+                <li>
+					llvm.sadd.with.overflow.*
+
+                </li>
+                <li>
+					llvm.uadd.with.overflow.*
+
+                </li>
+                <li>
+					llvm.ssub.with.overflow.*
+
+                </li>
+                <li>
+					llvm.usub.with.overflow.*
+
+                </li>
+                <li>
+					llvm.smul.with.overflow.*
+
+                </li>
+                <li>
+					llvm.umul.with.overflow.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Saturation Arithmetic Intrinsics
+            <ul>
+                <li>
+					llvm.sadd.sat.*
+
+                </li>
+                <li>
+					llvm.uadd.sat.*
+
+                </li>
+                <li>
+					llvm.ssub.sat.*
+
+                </li>
+                <li>
+					llvm.usub.sat.*
+
+                </li>
+                <li>
+					llvm.sshl.sat.*
+
+                </li>
+                <li>
+					llvm.ushl.sat.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Fixed Point Arithmetic Intrinsics
+            <ul>
+                <li>
+					llvm.smul.fix.*
+
+                </li>
+                <li>
+					llvm.umul.fix.*
+
+                </li>
+                <li>
+					llvm.smul.fix.sat.*
+
+                </li>
+                <li>
+					llvm.umul.fix.sat.*
+
+                </li>
+                <li>
+					llvm.sdiv.fix.*
+
+                </li>
+                <li>
+					llvm.udiv.fix.*
+
+                </li>
+                <li>
+					llvm.sdiv.fix.sat.*
+
+                </li>
+                <li>
+					llvm.udiv.fix.sat.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Specialised Arithmetic Intrinsics
+            <ul>
+                <li>
+					llvm.canonicalize.*
+
+                </li>
+                <li>
+					llvm.fmuladd.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Hardware-Loop Intrinsics
+            <ul>
+                <li>
+					llvm.set.loop.iterations.*
+
+                </li>
+                <li>
+					llvm.start.loop.iterations.*
+
+                </li>
+                <li>
+					llvm.test.set.loop.iterations.*
+
+                </li>
+                <li>
+					llvm.test.start.loop.iterations.*
+
+                </li>
+                <li>
+					llvm.loop.decrement.reg.*
+
+                </li>
+                <li>
+					llvm.loop.decrement.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Vector Reduction Intrinsics
+            <ul>
+                <li>
+					llvm.vector.reduce.add.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.fadd.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.mul.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.fmul.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.and.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.or.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.xor.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.smax.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.smin.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.umax.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.umin.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.fmax.*
+
+                </li>
+                <li>
+					llvm.vector.reduce.fmin.*
+
+                </li>
+                <li>
+					llvm.experimental.vector.insert
+
+                </li>
+                <li>
+					llvm.experimental.vector.extract
+
+                </li>
+                <li>
+					llvm.experimental.vector.reverse
+
+                </li>
+                <li>
+					llvm.experimental.vector.splice
+
+                </li>
+                <li>
+					llvm.experimental.stepvector
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Matrix Intrinsics
+            <ul>
+                <li>
+					llvm.matrix.transpose.*
+
+                </li>
+                <li>
+					llvm.matrix.multiply.*
+
+                </li>
+                <li>
+					llvm.matrix.column.major.load.*
+
+                </li>
+                <li>
+					llvm.matrix.column.major.store.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Half Precision Floating-Point Intrinsics
+            <ul>
+                <li>
+					llvm.convert.to.fp16
+
+                </li>
+                <li>
+					llvm.convert.from.fp16
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Saturating floating-point to integer conversions
+            <ul>
+                <li>
+					llvm.fptoui.sat.*
+
+                </li>
+                <li>
+					llvm.fptosi.sat.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Debugger Intrinsics</li>
+        <li>
+			Exception Handling Intrinsics</li>
+        <li>
+			Pointer Authentication Intrinsics</li>
+        <li>
+			Trampoline Intrinsics
+            <ul>
+                <li>
+					llvm.init.trampoline
+
+                </li>
+                <li>
+					llvm.adjust.trampoline
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Vector Predication Intrinsics
+            <ul>
+                <li>
+					llvm.vp.select.*
+
+                </li>
+                <li>
+					llvm.vp.merge.*
+
+                </li>
+                <li>
+					llvm.vp.add.*
+
+                </li>
+                <li>
+					llvm.vp.sub.*
+
+                </li>
+                <li>
+					llvm.vp.mul.*
+
+                </li>
+                <li>
+					llvm.vp.sdiv.*
+
+                </li>
+                <li>
+					llvm.vp.udiv.*
+
+                </li>
+                <li>
+					llvm.vp.srem.*
+
+                </li>
+                <li>
+					llvm.vp.urem.*
+
+                </li>
+                <li>
+					llvm.vp.ashr.*
+
+                </li>
+                <li>
+					llvm.vp.lshr.*
+
+                </li>
+                <li>
+					llvm.vp.shl.*
+
+                </li>
+                <li>
+					llvm.vp.or.*
+
+                </li>
+                <li>
+					llvm.vp.and.*
+
+                </li>
+                <li>
+					llvm.vp.xor.*
+
+                </li>
+                <li>
+					llvm.vp.fadd.*
+
+                </li>
+                <li>
+					llvm.vp.fsub.*
+
+                </li>
+                <li>
+					llvm.vp.fmul.*
+
+                </li>
+                <li>
+					llvm.vp.fdiv.*
+
+                </li>
+                <li>
+					llvm.vp.frem.*
+
+                </li>
+                <li>
+					llvm.vp.fneg.*
+
+                </li>
+                <li>
+					llvm.vp.fma.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.add.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.fadd.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.mul.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.fmul.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.and.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.or.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.xor.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.smax.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.smin.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.umax.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.umin.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.fmax.*
+
+                </li>
+                <li>
+					llvm.vp.reduce.fmin.*
+
+                </li>
+                <li>
+					llvm.get.active.lane.mask.*
+
+                </li>
+                <li>
+					llvm.experimental.vp.splice
+
+                </li>
+                <li>
+					llvm.vp.load
+
+                </li>
+                <li>
+					llvm.vp.store
+
+                </li>
+                <li>
+					llvm.experimental.vp.strided.load
+
+                </li>
+                <li>
+					llvm.experimental.vp.strided.store
+
+                </li>
+                <li>
+					llvm.vp.gather
+
+                </li>
+                <li>
+					llvm.vp.scatter
+
+                </li>
+                <li>
+					llvm.vp.trunc.*
+
+                </li>
+                <li>
+					llvm.vp.zext.*
+
+                </li>
+                <li>
+					llvm.vp.sext.*
+
+                </li>
+                <li>
+					llvm.vp.fptrunc.*
+
+                </li>
+                <li>
+					llvm.vp.fpext.*
+
+                </li>
+                <li>
+					llvm.vp.fptoui.*
+
+                </li>
+                <li>
+					llvm.vp.fptosi.*
+
+                </li>
+                <li>
+					llvm.vp.uitofp.*
+
+                </li>
+                <li>
+					llvm.vp.sitofp.*
+
+                </li>
+                <li>
+					llvm.vp.ptrtoint.*
+
+                </li>
+                <li>
+					llvm.vp.inttoptr.*
+
+                </li>
+                <li>
+					llvm.vp.fcmp.*
+
+                </li>
+                <li>
+					llvm.vp.icmp.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Masked Vector Load and Store Intrinsics
+            <ul>
+                <li>
+					llvm.masked.load.*
+
+                </li>
+                <li>
+					llvm.masked.store.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Masked Vector Gather and Scatter Intrinsics
+            <ul>
+                <li>
+					llvm.masked.gather.*
+
+                </li>
+                <li>
+					llvm.masked.scatter.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Masked Vector Expanding Load and Compressing Store Intrinsics
+            <ul>
+                <li>
+					llvm.masked.expandload.*
+
+                </li>
+                <li>
+					llvm.masked.compressstore.*
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Memory Use Markers
+            <ul>
+                <li>
+					llvm.lifetime.start
+
+                </li>
+                <li>
+					llvm.lifetime.end
+
+                </li>
+                <li>
+					llvm.invariant.start
+
+                </li>
+                <li>
+					llvm.invariant.end
+
+                </li>
+                <li>
+					llvm.launder.invariant.group
+
+                </li>
+                <li>
+					llvm.strip.invariant.group
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Constrained Floating-Point Intrinsics
+            <ul>
+                <li>
+					llvm.experimental.constrained.fadd
+
+                </li>
+                <li>
+					llvm.experimental.constrained.fsub
+
+                </li>
+                <li>
+					llvm.experimental.constrained.fmul
+
+                </li>
+                <li>
+					llvm.experimental.constrained.fdiv
+
+                </li>
+                <li>
+					llvm.experimental.constrained.frem
+
+                </li>
+                <li>
+					llvm.experimental.constrained.fma
+
+                </li>
+                <li>
+					llvm.experimental.constrained.fptoui
+
+                </li>
+                <li>
+					llvm.experimental.constrained.fptosi
+
+                </li>
+                <li>
+					llvm.experimental.constrained.uitofp
+
+                </li>
+                <li>
+					llvm.experimental.constrained.sitofp
+
+                </li>
+                <li>
+					llvm.experimental.constrained.fptrunc
+
+                </li>
+                <li>
+					llvm.experimental.constrained.fpext
+
+                </li>
+                <li>
+					llvm.experimental.constrained.fcmp and llvm.experimental.constrained.fcmps
+
+                </li>
+                <li>
+					llvm.experimental.constrained.fmuladd
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Constrained libm-equivalent Intrinsics
+            <ul>
+                <li>
+					llvm.experimental.constrained.sqrt
+
+                </li>
+                <li>
+					llvm.experimental.constrained.pow
+
+                </li>
+                <li>
+					llvm.experimental.constrained.powi
+
+                </li>
+                <li>
+					llvm.experimental.constrained.sin
+
+                </li>
+                <li>
+					llvm.experimental.constrained.cos
+
+                </li>
+                <li>
+					llvm.experimental.constrained.exp
+
+                </li>
+                <li>
+					llvm.experimental.constrained.exp2
+
+                </li>
+                <li>
+					llvm.experimental.constrained.log
+
+                </li>
+                <li>
+					llvm.experimental.constrained.log10
+
+                </li>
+                <li>
+					llvm.experimental.constrained.log2
+
+                </li>
+                <li>
+					llvm.experimental.constrained.rint
+
+                </li>
+                <li>
+					llvm.experimental.constrained.lrint
+
+                </li>
+                <li>
+					llvm.experimental.constrained.llrint
+
+                </li>
+                <li>
+					llvm.experimental.constrained.nearbyint
+
+                </li>
+                <li>
+					llvm.experimental.constrained.maxnum
+
+                </li>
+                <li>
+					llvm.experimental.constrained.minnum
+
+                </li>
+                <li>
+					llvm.experimental.constrained.maximum
+
+                </li>
+                <li>
+					llvm.experimental.constrained.minimum
+
+                </li>
+                <li>
+					llvm.experimental.constrained.ceil
+
+                </li>
+                <li>
+					llvm.experimental.constrained.floor
+
+                </li>
+                <li>
+					llvm.experimental.constrained.round
+
+                </li>
+                <li>
+					llvm.experimental.constrained.roundeven
+
+                </li>
+                <li>
+					llvm.experimental.constrained.lround
+
+                </li>
+                <li>
+					llvm.experimental.constrained.llround
+
+                </li>
+                <li>
+					llvm.experimental.constrained.trunc
+
+                </li>
+                <li>
+					llvm.experimental.noalias.scope.decl
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Floating Point Environment Manipulation intrinsics
+            <ul>
+                <li>
+					llvm.flt.rounds
+
+                </li>
+                <li>
+					llvm.set.rounding
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Floating-Point Test Intrinsics
+            <ul>
+                <li>
+					llvm.is.fpclass
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			General Intrinsics
+            <ul>
+                <li>
+					llvm.var.annotation
+
+                </li>
+                <li>
+					llvm.ptr.annotation.*
+
+                </li>
+                <li>
+					llvm.annotation.*
+
+                </li>
+                <li>
+					llvm.codeview.annotation
+
+                </li>
+                <li>
+					llvm.trap
+
+                </li>
+                <li>
+					llvm.debugtrap
+
+                </li>
+                <li>
+					llvm.ubsantrap
+
+                </li>
+                <li>
+					llvm.stackprotector
+
+                </li>
+                <li>
+					llvm.stackguard
+
+                </li>
+                <li>
+					llvm.objectsize
+
+                </li>
+                <li>
+					llvm.expect
+
+                </li>
+                <li>
+					llvm.expect.with.probability
+
+                </li>
+                <li>
+					llvm.assume
+
+                </li>
+                <li>
+					llvm.ssa.copy
+
+                </li>
+                <li>
+					llvm.type.test
+
+                </li>
+                <li>
+					llvm.type.checked.load
+
+                </li>
+                <li>
+					llvm.arithmetic.fence
+
+                </li>
+                <li>
+					llvm.donothing
+
+                </li>
+                <li>
+					llvm.experimental.deoptimize
+
+                </li>
+                <li>
+					llvm.experimental.guard
+
+                </li>
+                <li>
+					llvm.experimental.widenable.condition
+                </li>
+                <li>
+					llvm.load.relative
+
+                </li>
+                <li>
+					llvm.sideeffect
+
+                </li>
+                <li>
+					llvm.is.constant.*
+
+                </li>
+                <li>
+					llvm.ptrmask
+
+                </li>
+                <li>
+					llvm.vscale
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Stack Map Intrinsics</li>
+        <li>
+			Element Wise Atomic Memory Intrinsics
+            <ul>
+                <li>
+					llvm.memcpy.element.unordered.atomic
+
+                </li>
+                <li>
+					llvm.memmove.element.unordered.atomic
+
+                </li>
+                <li>
+					llvm.memset.element.unordered.atomic
+
+                </li>
+            </ul>
+        </li>
+        <li>
+			Objective-C ARC Runtime Intrinsics
+            <ul>
+                <li>
+					llvm.objc.autorelease
+
+                </li>
+                <li>
+					llvm.objc.autoreleasePoolPop
+
+                </li>
+                <li>
+					llvm.objc.autoreleasePoolPush
+
+                </li>
+                <li>
+					llvm.objc.autoreleaseReturnValue
+
+                </li>
+                <li>
+					llvm.objc.copyWeak
+
+                </li>
+                <li>
+					llvm.objc.destroyWeak
+
+                </li>
+                <li>
+					llvm.objc.initWeak
+
+                </li>
+                <li>
+					llvm.objc.loadWeak
+
+                </li>
+                <li>
+					llvm.objc.loadWeakRetained
+
+                </li>
+                <li>
+					llvm.objc.moveWeak
+
+                </li>
+                <li>
+					llvm.objc.release
+
+                </li>
+                <li>
+					llvm.objc.retain
+
+                </li>
+                <li>
+					llvm.objc.retainAutorelease
+
+                </li>
+                <li>
+					llvm.objc.retainAutoreleaseReturnValue
+
+                </li>
+                <li>
+					llvm.objc.retainAutoreleasedReturnValue
+
+                </li>
+                <li>
+					llvm.objc.retainBlock
+
+                </li>
+                <li>
+					llvm.objc.storeStrong
+
+                </li>
+                <li>
+					llvm.objc.storeWeak
+
+                </li>
+                <li>
+					Preserving Debug Information Intrinsics</li>
+                <li>
+					llvm.preserve.array.access.index
+
+                </li>
+                <li>
+					llvm.preserve.union.access.index
+
+                </li>
+                <li>
+					llvm.preserve.struct.access.index
+
+                </li>
+                <li>
+					llvm.fptrunc.round
+
+                </li>
+            </ul>
+        </li>
+    </ul>
+</li>
+</ul>

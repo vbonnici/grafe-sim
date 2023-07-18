@@ -1,0 +1,11 @@
+wheel
+setuptools>=60.0
+matplotlib
+networkx==2.8.2
+numpy
+jupyter
+pandas
+seaborn
+tqdm
+antlr4-python3-runtime==4.10
+pydot
