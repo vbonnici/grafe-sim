@@ -185,6 +185,37 @@ Launch jupyter notebook server:
 python -m jupyter notebook
 ```
 
+
+# Analysis
+
+## Necessary packages
+In order to run the examples inside the jupyter notebooks some packages must be installed, which are:
+- sklearn
+- yellowbrick
+
+### Installation
+After activating the virtual environment created above, execute the following commands:
+<br>
+
+**skelearn**
+```sh
+pip3 install -U scikit-learn
+```
+
+**yellowbrick**
+```sh
+pip install yellowbrick
+```
+
+## Running the example
+After activating the virtual environment, start the **jupyter** server from the 'analysis' folder:
+```sh
+jupyter notebook
+``` 
+This command will start a new tab in the default browser showing a list of all the files and folder located into the folder in which the command has been executed, in this case *analysis*.
+
+Select the desired notebook and execute the internal boxes.
+
 <!-- 
 ... TODO ...
 ## Unit testing
