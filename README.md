@@ -26,6 +26,7 @@ The source code is located in `/src` directory and the unit tests in
 ### ```/analysis```
 This folder contains some workflow examples of the clustering and classification
 problems. They are both contained inside a *jupyter notebook*.
+It also contains a `/data` folder in which are a sample of the Codenet dataset source files.
 
 ### ```/maps```
 
@@ -187,6 +188,22 @@ python -m jupyter notebook
 
 
 # Analysis
+The analysis phase is performed using *jupyter notebook*. The analysis in these notebooks
+are done on a series of precomputed features extracted from the A-CFGs generated from the source code.
+
+## Features generation
+Execute these commands to generate the features starting from the source code.
+
+
+Create a folder for the generated files inside `/analysis`
+```sh
+mkdir featuresData
+```
+
+Choose a file form the data folder and generate the features
+```sh
+python3 gen-features-callgraph.py ../data/p00000/[somefile] -od featuresData
+```
 
 ## Necessary packages
 In order to run the examples inside the jupyter notebooks some packages must be installed, which are:
