@@ -1,0 +1,52 @@
+*out*/
+*.pdf
+# maybe temporary
+*.dot
+*.grapes
+
+# all hidden files
+.*
+
+!.gitignore
+
+# consider .trash, .github dirs
+!.trash/
+!.github/
+
+# consider dot file for test
+!py/tests/data/a-cfg-sample.dot
+!py/tests/data/cfg-sample.dot
+
+
+# python cache
+__pycache__
+
+# antlr java build directory
+antlr_llvm/java
+
+antlr_llvm/.antlr
+
+# python venv
+venv
+chatgpt/venv
+
+# python package info
+py/src/*.egg-info
+
+# GraphGrepSX executable and object files
+py/src/ccpt/cfg_to_trie/ggsx
+GraphGrepSX/ggsx
+py/ggsx
+GraphGrepSX/vflib2/lib/
+# Object files
+*.o
+
+# TEMPORARY: tox build file
+py/build
+
+# ccpt log files
+ccpt.log
+
+a.out
+
+analysis/featuresData
