@@ -130,7 +130,7 @@ def main() -> None:
         disable_existing_loggers=False)
 
     default_mapping = os.path.join(os.path.dirname(__file__),
-                                   "../../../../classes/map0.csv")
+                                   "../../../../maps/map0.csv")
     # CLI arguments parsing.
 
     parser = argparse.ArgumentParser()
@@ -338,11 +338,11 @@ def main_new() -> None:
     # Generate map from csv.
     # TODO: think about better solution.
     predef_map_dict: dict[int, str] = {
-        0: "../../../../classes/map-nomap-0.csv",
-        1: "../../../../classes/map-ref-1.csv",
-        2: "../../../../classes/map-ref-loadstore-2.csv",
-        3: "../../../../classes/map-ref-loadstore-phicall-3.csv",
-        4: "../../../../classes/map-ref-more-detail-4.csv"
+        0: "../../../../maps/map-nomap-0.csv",
+        1: "../../../../maps/map-ref-1.csv",
+        2: "../../../../maps/map-ref-loadstore-2.csv",
+        3: "../../../../maps/map-ref-loadstore-phicall-3.csv",
+        4: "../../../../maps/map-ref-more-detail-4.csv"
     }
 
     input_map_path: str = ""

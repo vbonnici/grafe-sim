@@ -26,11 +26,11 @@ def get_predef_map_path(id: int) -> str:
     """
 
     predef_map_dict: dict[int, str] = {
-        0: "../../../../classes/map-nomap-0.csv",
-        1: "../../../../classes/map-ref-1.csv",
-        2: "../../../../classes/map-ref-loadstore-2.csv",
-        3: "../../../../classes/map-ref-loadstore-phicall-3.csv",
-        4: "../../../../classes/map-ref-more-detail-4.csv"
+        0: "../../../../maps/map-nomap-0.csv",
+        1: "../../../../maps/map-ref-1.csv",
+        2: "../../../../maps/map-ref-loadstore-2.csv",
+        3: "../../../../maps/map-ref-loadstore-phicall-3.csv",
+        4: "../../../../maps/map-ref-more-detail-4.csv"
     }
 
     try:
@@ -94,7 +94,7 @@ def generate_unique_labels(filename: str, level: int):
     if level != 0 or level != 1:
         level = 1
 
-    with open(os.path.dirname(__file__) + "../classes/" + filename,
+    with open(os.path.dirname(__file__) + "../maps/" + filename,
               newline="") as csvfile:
         spamreader = csv.reader(csvfile, delimiter=";")
         header = []
