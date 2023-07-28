@@ -1,9 +1,7 @@
 # grafe-sim
-Code similarity via graph-based features
+Code similarity via graph-based features.
 
-
-
-# Project structure
+## Project structure
 
 ### ```/GraphGrepSX```
 
@@ -32,20 +30,20 @@ It also contains a `/data` folder in which are a sample of the Codenet dataset s
 
 This folder contains a set of ```.csv``` files which represents
 some predefinite maps that can be used for A-CFG creation.
-# Setup
+## Setup
 
 <!-- In order to install and use `ccpt` follow the following steps:
 
 1. Install python requirements
 2. Install OS requirements: clang/opt v7.0.0, graphviz
 3. Install `ccpt` package in editor mode
-4. Compile GraphGrepSX on your own machine 
+4. Compile GraphGrepSX on your own machine
 ....
 ....
 
 -->
 
-## Clang/opt
+### LLVM Clang and Opt (v7.0.0)
 <!--
 Also required:.
  - `clang` (1:14.0-55~exp2)
@@ -85,13 +83,13 @@ opt-7 --version
 llvm-cxxfilt-7 --version
 ```
 
-## Graphviz
+### Graphviz
 To install graphviz on Ubuntu:
 ```
 sudo apt install graphviz
 ```
 
-## ggsx
+### Modified GraphGrepSX (```ggsx```)
 
 To compile GraphGrepSX on your own machine:
 ```sh
@@ -102,9 +100,9 @@ cp ggsx /py/src/ccpt/cfg_to_trie
 ```
 <!-- TODO: check last step with new project structure. -->
 
-## ```ccpt``` Python package
+### ```ccpt``` Python package
 
-### 1. Python requirements
+#### 1. Python requirements
 
 To install Python requirements it is raccomanded to create a new virtual
 environment:
@@ -137,7 +135,7 @@ To install also additional requirements for development:
 (venv)$ deactivate
 
 ```
-### 3. ccpt package in editor mode
+#### 2. ccpt package in editor mode
 
 From virtual environment:
 ```sh
@@ -197,12 +195,13 @@ Execute these commands to generate the features starting from the source code.
 
 Create a folder for the generated files inside `/analysis`
 ```sh
+cd analysis
 mkdir featuresData
 ```
 
 Choose a file form the data folder and generate the features
 ```sh
-python3 gen-features-callgraph.py ../data/p00000/[somefile] -od featuresData
+python3 gen-features-callgraph.py data/p00000/[somefile] -od featuresData
 ```
 
 ## Necessary packages
@@ -228,12 +227,12 @@ pip install yellowbrick
 After activating the virtual environment, start the **jupyter** server from the 'analysis' folder:
 ```sh
 jupyter notebook
-``` 
+```
 This command will start a new tab in the default browser showing a list of all the files and folder located into the folder in which the command has been executed, in this case *analysis*.
 
 Select the desired notebook and execute the internal boxes.
 
-<!-- 
+<!--
 ... TODO ...
 ## Unit testing
 
