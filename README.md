@@ -199,7 +199,7 @@ cd analysis
 mkdir featuresData
 ```
 
-Choose a file form the data folder and generate the features
+Choose a file from the data folder and generate the features
 ```sh
 python3 gen-features-callgraph.py data/p00000/[somefile] -od featuresData
 ```
